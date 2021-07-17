@@ -7,5 +7,22 @@ $(document).ready(function(){
 		var getID = $(this).attr('data-tab');
 		$('.tab-content').hide();
 		$('#'+getID).fadeIn('150');
-	})
+	});
+
+	$('body').on('click','.icon-mob',function(){
+		$('.overlay').fadeToggle();
+		$('.main-nav').fadeToggle(150);
+	});
+
+	$(document).on('click', function (e) {
+		if ($(e.target).closest('.icon-mob, .main-nav').length === 0) {
+			$('.main-nav').hide();
+			$('.overlay').fadeOut();
+		}
+	});
+	
+	$('body').on('click','.footer-links h3',function(){
+		$(this).toggleClass('active');
+		$(this).next('ul').slideToggle(100);
+	});
 });
